@@ -29,14 +29,12 @@ async function getFacebookAdMedia(adPreviewUrl) {
 
         await page.goto(adPreviewUrl, { waitUntil: 'domcontentloaded', timeout: 20000 });
 
-        // חפש וידאו
         const videoElement = await page.$('video');
         if (videoElement) {
             const videoSrc = await page.evaluate(video => video.src, videoElement);
             return { type: 'video', src: videoSrc };
         }
 
-        // חפש תמונה אם אין וידאו
         const imgElement = await page.$('img');
         if (imgElement) {
             const imgSrc = await page.evaluate(img => img.src, imgElement);

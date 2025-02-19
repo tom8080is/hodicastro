@@ -6,6 +6,11 @@ const app = express();
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
+// נתיב GET לברירת מחדל שיחזיר תשובה לכתובת הבסיס
+app.get('/', (req, res) => {
+    res.send('השרת פועל');
+});
+
 async function getFacebookAdMedia(adPreviewUrl) {
     let browser;
     try {
